@@ -1,27 +1,4 @@
-Universidad Peruana de Ciencias Aplicadas
-
-Ingeniería de Software - Grupo 2 (WX73)
-
-COMPLEJIDAD ALGORÍTMICA
-
-INFORME DEL HITO 1
-
-Profesor: Canaval Sánchez, Luis Martin 
-
-Equipo: Lambders
-
-Producto: Cinefilia
-
-
-Integrantes:
-García Vásquez, Nirvana Gabriela 				U202110244
-
-Moreno Best, Michelle Francesca 				U202110543
-
-Scerpella Zarkovic, Marcelo Alejandro 			U202110062
-
-Septiembre, 2023-2
-
+![image](https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/img/1.Caratula.png)
 <br><br>
 ___
 <br>
