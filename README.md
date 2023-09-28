@@ -12,6 +12,10 @@ ___
 3. [Propuesta](#propuesta)
 4. [Referencias bibliográficas](#referencias-bibliográficas)
 
+
+Repositorio de Github: https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2
+
+
 <br><br>
 ___
 <br>
