@@ -17,8 +17,10 @@ for index, row in data.iterrows():
         'genres': eval(row['genres']),
         'popularity': row['popularity'],
         'score': row['score'],
-        'image': "/home/marcelo/documentation/" + row['image']
+        'image': "documentation/" + row['image']
     }
+    if type(anime_title) == float:
+        anime_title = row['titleRomaji']
     Grafo.add_node(anime_title, **anime_attributes)
 
 
@@ -95,7 +97,7 @@ def calcularDijkstra(a,b):
         print(f"Ruta más corta entre {a} y {b}:")
         for node in camino:
             print(node)
-        porcentajeRecomendacion = round(-5.64 * peso + 113.43,0)
+        porcentajeRecomendacion = round(-5.1 * peso + 100,0)
         print(f"El porcentaje de recomendacion del anime {b} con respecto al anime {a} es del {porcentajeRecomendacion}%")
     else:
         print(f"No se encontró una ruta entre {a} y {b}. Posiblemente se deba a que {a} o {b} no esten en la base de datos.")
@@ -107,6 +109,7 @@ while(True):
     b = input("Ingrese el nombre del anime 2:")
     if a.lower() == "salir" or b.lower() == "salir":
         break
+        print("Dibujando grafo (Esto puede tardar...)")
     else:
         calcularDijkstra(a, b)
 
