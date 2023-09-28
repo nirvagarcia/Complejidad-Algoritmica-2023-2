@@ -1,4 +1,4 @@
-![image](https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/img/1.Caratula.png)
+![image](https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/img/1.CaratulaLam.png)
 
 <br><br>
 ___
