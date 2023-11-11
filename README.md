@@ -85,13 +85,14 @@ ___
 
 # 3. Propuesta
 
-Nuestra propuesta consiste en desarrollar una aplicación web para calcular la similitud de dos animes utilizando la técnica del Algoritmo de Dijkstra, que es una técnica de recorrido y búsqueda en grafos. La elección de esta técnica se debe a su eficiencia y velocidad para encontrar la ruta más corta en un grafo ponderado. Según Association for Computing Machinery (2012), se demostró que el Algoritmo de Dijkstra puede ser aplicado exitosamente en sistemas de recomendación, permitiendo encontrar relaciones de similitud entre elementos y generar recomendaciones precisas.
+Nuestra propuesta consiste en desarrollar una aplicación web para calcular la similitud de dos animes elegidos por el usuario utilizando la técnica del Algoritmo de Dijkstra, que es una técnica de recorrido y búsqueda en grafos. El objetivo principal de esta propuesta es ayudar a aquellos fanáticos del anime de encontrar nuevas recomendaciones de anime en base a sus gustos actuales, ya que el gran catálogo de animes en la actualidad es muy extenso, dificultando el encontrar un buen anime que se adapte a tus gustos.
 
-Implementaremos el Algoritmo de Dijkstra en nuestra aplicación web para encontrar el camino más corto entre dos animes dados, teniendo en cuenta la similitud de géneros y la popularidad que tienen en AniDB. Cada nodo en nuestro grafo representará un anime, y las conexiones entre los nodos representarán las relaciones entre géneros y audiencias similares.
+La aplicación consiste en una página en la que el usuario puede elegir dos animes, uno que ya ha visto, y uno que quiere ver. Tras seleccionar los animes, se calculará el camino mínimo entre estos, y en base al resultado del peso del camino, se calculara que tan probable es que al usuario le guste el segundo ánime, si le gustó el primero.
 
-Además, desarrollaremos la aplicación web utilizando el framework Flask, que es una opción sencilla y eficiente para proyectos de desarrollo web en Python. Flask proporciona una estructura flexible y fácil de usar, permitiéndonos implementar rápidamente la funcionalidad de nuestra aplicación web.
+La elección de esta técnica se debe a su eficiencia y velocidad para encontrar la ruta más corta en un grafo ponderado. Según Association for Computing Machinery (2012), se demostró que el Algoritmo de Dijkstra puede ser aplicado exitosamente en sistemas de recomendación, permitiendo encontrar relaciones de similitud entre elementos y generar recomendaciones precisas. Implementaremos el Algoritmo de Dijkstra en nuestra aplicación web para encontrar el camino más corto entre dos animes dados, teniendo en cuenta la similitud de géneros y la popularidad que tienen en AniDB. Cada nodo en nuestro grafo representará un anime, y las conexiones entre los nodos representarán las relaciones entre géneros y audiencias similares.
 
-Al combinar la potencia del Algoritmo de Dijkstra con la facilidad de desarrollo de Flask, lograremos una aplicación web que recomendará animes de manera precisa y eficiente, brindando a los usuarios una experiencia satisfactoria.
+Además, desarrollaremos la aplicación web utilizando el framework Flask, que es una opción sencilla y eficiente para proyectos de desarrollo web en Python. Flask proporciona una estructura flexible y fácil de usar, permitiéndonos implementar rápidamente la funcionalidad de nuestra aplicación web. Al combinar la potencia del Algoritmo de Dijkstra con la facilidad de desarrollo de Flask, lograremos una aplicación web que recomendará animes de manera precisa y eficiente, brindando a los usuarios una experiencia satisfactoria.
+
 
 
 <br><br>
