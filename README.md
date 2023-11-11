@@ -111,28 +111,39 @@ Hemos decidido que el diseño del aplicativo sea de color negro ya que el color 
 Imagen 4: Comparador de animes
 
 
+![img 1](https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/img/imagen%20nueva%201.png)
+
+Imagen 5: Comparador de animes
+
+
 2). Selector de animes en texto: Este componente de la sección “Comparador de animes” permite a los usuarios elegir el anime que están buscando, de la lista de animes que tenemos en la base de datos. Este selector usa texto simple, por lo que puede cargar y mostrar todos los nombres de los animes disponibles fácilmente, sin suponer un consumo importante de backend. También muestra la carátula del anime seleccionado en grande tras elegir uno.
 
 
-![img 1](https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/img/Todo%20Funciona.png)
-
-Imagen 5: Diseño del selector de Animes, anime no seleccionado
-
 ![img 1](https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/img/parte%204%20imagen%202.png)
 
-Imagen 6: Diseño del selector de Animes, anime seleccionado
-
-3). Knob comparativo: El knob comparativo pertenece a la sección “Comparador de animes”, y es el encargado de mostrar el porcentaje de similitud entre los dos animes elegidos por el usuario. El valor por defecto que muestra es 0, si no se ha elegido ningún anime, o si no ha recibido el valor del backend.
+Imagen 6: Diseño del selector de Animes, anime no seleccionado
 
 ![img 1](https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/img/parte%204%20imagen%203.png)
 
+
 Imagen 7: Diseño del selector de Animes, anime seleccionado
 
-4). Selector de animes con portadas: En esta sección, se listan todos los animes existentes de la base de datos, con sus respectivas imágenes. Para ingresar a este selector, solo basta clickear la portada de uno de los dos animes en la pestaña principal. Este selector fue implementado en el componente Picker. Su función es facilitar al usuario encontrar un anime en concreto de forma más visual, para que pueda elegir uno de los dos animes a comparar. Este componente carga los animes usando Lazy Load, para no sobrecargar la base de datos o el servidor que provee las imágenes. Los animes mostrados se cargan de 10 en 10.
+3). Knob comparativo: El knob comparativo pertenece a la sección “Comparador de animes”, y es el encargado de mostrar el porcentaje de similitud entre los dos animes elegidos por el usuario. El valor por defecto que muestra es 0, si no se ha elegido ningún anime, o si no ha recibido el valor del backend.
 
 ![img 1](https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/img/parte%204%20imagen%204.png)
 
-Imagen 8: Diseño del selector de animes con interfaz visual completa y lazy load
+Imagen 8: Diseño del selector de Animes, anime seleccionado
+
+![img 1](https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/img/imagen%20neuva%202.png)
+
+Imagen 9: Diseño del selector de Animes, anime seleccionado
+
+4). Selector de animes con portadas: En esta sección, se listan todos los animes existentes de la base de datos, con sus respectivas imágenes. Para ingresar a este selector, solo basta clickear la portada de uno de los dos animes en la pestaña principal. Este selector fue implementado en el componente Picker. Su función es facilitar al usuario encontrar un anime en concreto de forma más visual, para que pueda elegir uno de los dos animes a comparar. Este componente carga los animes usando Lazy Load, para no sobrecargar la base de datos o el servidor que provee las imágenes. Los animes mostrados se cargan de 10 en 10.
+
+![img 1](https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/img/iamgen%20nueva%203.jpg)
+
+
+Imagen 10: Diseño del selector de animes con interfaz visual completa y lazy load
 
 
 
@@ -143,9 +154,37 @@ ___
 # 5. Validación de resultados y pruebas
 
 Comparador de Animes:
+| Prueba                           	| Entrada/Input (Anime 1)                          	| Entrada/Input (Anime 2)                          	| Resultado de la prueba (Salida/Output)<br>(Porcentaje de recomendación resultante) 	| Interpretación de los resultados de la prueba                                                                                                                                           	|
+|----------------------------------	|--------------------------------------------------	|--------------------------------------------------	|------------------------------------------------------------------------------------	|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
+| Animes con géneros diferentes    	| Teasing Master Takagi San<br>(Romance y Comedia) 	| Death Note<br>(Misterio, Psicológico y Thriller) 	| Resultado: 30%<br>[Imagen 9: Resultado de prueba]                                  	| Cuando se comparan animes con géneros diferentes, como Teasing Master Takagi-San (Romance y Comedia) con Death Note (Misterio, Psicológico y Thriller), el resultado es bajo (30%).     	|
+| Animes con géneros identicos     	| Your Lie in April (Romance y Drama)              	| Given (Romance y Drama)                          	| Resultado: 87%<br>[Imagen 10: Resultado de prueba]                                 	| Cuando se comparan animes que tienen géneros idénticos, como Your Lie in April (Romance y Drama) y Given (Romance y Drama), el porcentaje de recomendación resultante es muy alto (87%) 	|
+| Animes con géneros similares     	| Your Lie in April (Romance y Drama)              	| Teasing Master Takagi San<br>(Romance y Comedia) 	| Resultado: 69%<br>[Imagen 11: Resultado de prueba]                                 	| Cuando se comparten algunos géneros, como Teasing Master Takagi-San (Romance y Comedia), y Your Lie in April (Romance y Drama), el porcentaje de recomendación es alto (69%)            	|
+| Animes con géneros muy similares 	| One Piece (Acción, Aventura y Fantasía)          	| Attack on Titan<br>(Acción, Drama y Fantasía)    	| Resultado: 75%<br>[Imagen 12: Resultado de prueba]                                 	| Cuando se comparten muchos géneros, como One Piece (Acción, Aventura y Fantasía), y Attack on Titan (Acción, Drama y Fantasía), la recomendación resultante es alta (75%)               	|
 
 
+![img 1](https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/img/parte%206%20img%201.png)
 
+Imagen 11: Resultado de prueba
+
+![img 1](https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/img/parte%206%20img%202.png)
+
+Imagen 12: Resultado de prueba
+
+![img 1](https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/img/parte%206%20img%203.png)
+
+Imagen 13: Resultado de prueba
+
+![img 1](https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/img/parte%206%20img%204.png)
+
+Imagen 14: Resultado de prueba
+
+Frontend: https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/tree/6bdd8cf7d1e33c25cc4609ec63ffc33c8f459518/anime_comparator
+
+Flask: https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/backend.py
+
+Lógica en Python: https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/BackEndLogica.py
+
+Base de datos: https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/anime_data.csv
 
 
 
@@ -156,11 +195,8 @@ ___
 
 # 6. Conclusiones 
 
--	En conclusión, hemos desarrollado un sistema de recomendación de animes basado en grafos utilizando técnicas de filtrado colaborativo. Este enfoque nos ha permitido aprovechar las relaciones entre los animes y los usuarios para generar recomendaciones personalizadas y relevantes.
+En conclusión, nuestra aplicación web, basada en el Algoritmo de Dijkstra para calcular la similitud entre dos animes, representa una herramienta eficiente y sin complicaciones para los aficionados del anime que buscan descubrir nuevas opciones alineadas con sus gustos. Al permitir a los usuarios comparar dos animes y obtener resultados personalizados sin requerir información personal, la aplicación ofrece una experiencia enfocada en la búsqueda de contenido atractivo. Aunque el experimento actual ha demostrado la viabilidad y utilidad de la aplicación, futuras investigaciones podrían explorar mejoras adicionales en la precisión del algoritmo, así como la posibilidad de ampliar las funcionalidades para proporcionar una experiencia aún más enriquecedora a los usuarios.cado en diversos ámbitos del entretenimiento y la recomendación de contenido.
 
--	A través del análisis de los datos y la visualización de los grafos, hemos podido identificar patrones y tendencias en las preferencias de los usuarios, lo que nos ha ayudado a mejorar la precisión de las recomendaciones. Además, las pruebas realizadas han demostrado que nuestro sistema es capaz de adaptarse a los cambios en las preferencias de los usuarios y proporcionar recomendaciones actualizadas y relevantes.
-
--	En cuanto al trabajo futuro, podríamos ampliar nuestra base de datos de animes y usuarios para aumentar la diversidad y la representatividad de nuestras recomendaciones. En general, creemos que nuestro sistema de recomendación de animes basado en grafos tiene un gran potencial y puede ser aplicado en diversos ámbitos del entretenimiento y la recomendación de contenido.
 
 
 
