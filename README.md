@@ -7,11 +7,13 @@ ___
 
 ## Contenido
 
-1. [Descripción del problema](#descripción-del-problema)
-2. [Descripción y Visualización del conjunto de datos (dataset)](#descripción-y-visualización-del-conjunto-de-datos-dataset)
-3. [Propuesta](#propuesta)
-4. [Referencias bibliográficas](#referencias-bibliográficas)
-
+[1. Descripción del problema](1-Descripción-del-problema)
+[2. Descripción y Visualización del conjunto de datos (dataset)](2-Descripción-y-Visualización-del-conjunto-de-datos-(dataset))
+[3. Propuesta](3-Propuesta)
+[4. Diseño del aplicativo](4-Diseño-del-aplicativo)
+[5. Validación de resultados y pruebas](5-Validación-de-resultados-y-pruebas)
+[6. Conclusiones](6-Conclusiones)
+[7. Referencias bibliográficas](7-referencias-bibliográficas)
 
 Repositorio de Github: https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2
 
@@ -21,7 +23,7 @@ ___
 <br>
 
 
-## Descripción del problema
+# 1. Descripción del problema
 
 Actualmente, la industria del entretenimiento ha experimentado un crecimiento significativo en la popularidad de los animes, y como prueba de esto, se ha observado que las personas que disfrutan de este contenido audiovisual japonés, han aumentado en un 37% alrededor del mundo en los últimos 5 años. (The Association of Japanese Animations, 2022).
 
@@ -29,47 +31,59 @@ Esta demanda ha llevado a un aumento en la cantidad de animes disponibles y plat
 
 El problema que abordaremos es la dificultad de los usuarios para encontrar animes que sean de su agrado debido a la gran cantidad de opciones en el mercado actual. Nuestro objetivo principal es ofrecer a los usuarios una herramienta que les permita evaluar la probabilidad de que les guste un anime nuevo en función de su disfrute previo de otro anime específico. Esto tiene como finalidad evitar que los usuarios inviertan tiempo en ver animes que no se ajusten a sus gustos y preferencias, optimizando así su experiencia de entretenimiento.
 
+
 <br><br>
 ___
 <br>
 
 
-## Descripción y Visualización del conjunto de datos (dataset)
+# 2. Descripción y Visualización del conjunto de datos (dataset)
 
 El conjunto de datos utilizado en este análisis se obtiene de la base de datos de AniDB (https://anidb.net/), una plataforma que almacena información detallada sobre diversas formas de animación asiática. Esta base de datos contiene información detallada de cada anime, pero los datos que extrajimos son: Title, Start date, End date, Format, Genres, Popularity, Score e Image.
+
 
 Para esta extracción, generamos un programa con Python que nos permitió extraer el Dataset requerido de AniDB, generar un archivo CSV con toda esta data y, crear una carpeta que albergue las imágenes de portada de todos los animes analizados, también extraídas de AniDB. Este link muestra el código en Python realizado: 
 https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/Data-Imgs-en-csv.py 
 
 Mostramos la forma de nuestro Dataset, conformado por  7 columnas (los atributos del anime). En total, analizaremos 2000 animes (nodos).
+
 |                 title                 |          startDate          |              endDate             |                      format                      |                       genres                      |                      popularity                      |                  score                 |                     image                     |
 |:-------------------------------------:|:---------------------------:|:--------------------------------:|:------------------------------------------------:|:-------------------------------------------------:|:----------------------------------------------------:|:--------------------------------------:|:---------------------------------------------:|
 | Nombre del anime, único en el dataset | Fecha de estreno del anime. | Fecha de finaliza ción del anime | Formato del anime (TV, Movie, ONA, OVA, Special) | Arreglo de géneros del anime (Drama, Acción, etc) | Número de personas que vieron el anime, según AniDB. | Puntua ción del anime en base a AniDB. | Imagen del anime para su aprecia ción visual. |
 
 
-Para las conexiones entre nodos, utilizamos la librería NetworkX, únicamente para la representación interna de los nodos. En ellos, almacenamos el título del anime como nombre del nodo, y los datos del anime como cuerpo del nodo. Para la representación de las conexiones de los nodos, utilizamos la función add_edge, que nos permite almacenar los nodos vecinos que tiene cada nodo. Para la lectura de datos del disco utilizamos la función read_csv, que viene incluida en la librería Pandas. Los datos fueron leídos de un archivo .csv (Comma Separated Values), que tenía los datos separados por punto y coma. Elegimos separar los valores usando punto y coma en lugar de comas debido a que en el interior del archivo csv, se almacenan listas de python para guardar la lista de géneros que tiene cada anime, cuya representación en texto es una lista de valores entre corchetes separados por comas.
+En nuestro diseño, utilizamos la librería NetworkX para representar internamente los nodos y sus conexiones en nuestro sistema de recomendación de anime. Cada nodo representa un anime y almacenamos su título como nombre del nodo, mientras que los datos del anime se almacenan en el cuerpo del nodo. Para establecer las conexiones entre los nodos, utilizamos la función add_edge de NetworkX. Esta función nos permite almacenar los nodos vecinos que tiene cada anime, lo que nos permite construir un grafo de conexiones entre los animes.
 
-La conexión entre los nodos se hizo utilizando una función que evalúa la cantidad de géneros que cada anime tiene en común con otro anime, en relación al total de géneros que poseen, y la diferencia de popularidad entre ellos. La función fue diseñada para devolver un valor pequeño si los animes eran parecidos, y un valor grande si los animes eran muy diferentes. También evalúa si es que los animes tienen algún género en común. Si no tienen ninguno, entonces no se realiza una conexión.
+Para leer los datos del disco, utilizamos la función read_csv de la librería Pandas. Los datos se encontraban en un archivo .csv, donde estaban separados por punto y coma. Elegimos esta separación en lugar de comas debido a que dentro del archivo se almacenaban listas de géneros en formato de texto, representadas por valores entre corchetes separados por comas.
 
-El algoritmo que elegimos implementar fue Dijkstra, ya que teníamos nodos conectados por pesos diferentes, y queríamos hallar el camino mínimo que pudiera conectar dos animes, para saber qué tan diferentes son. Según las pruebas que realizamos manipulando los datos para el peor y el mejor caso dentro de las posibilidades de nuestro dataset, el valor del camino más corto que podría devolver la función en caso los animes sean idénticos en los valores evaluados, es 2.2, y el valor máximo que podría devolver la función es 19.4, que indicaría que los animes son muy diferentes.
+Para encontrar el camino mínimo que pudiera conectar dos animes y determinar qué tan diferentes eran, implementamos el algoritmo de Dijkstra. Este algoritmo fue elegido debido a que teníamos nodos conectados por pesos diferentes y queríamos encontrar el camino más corto entre ellos. Realizamos pruebas con diferentes casos dentro de nuestras posibilidades de datos y determinamos que el valor mínimo que podría devolver la función en caso de que los animes fueran idénticos en los valores evaluados era 2.2, mientras que el valor máximo era 19.4, lo que indicaría que los animes son muy diferentes.
 
 Mostramos el código en Python realizado para generar el CSV de las conexiones entre animes: https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/Conexiones-Animes.py 
 
-También logramos generar una visualización del grafo de forma automática por código, usando la libería networkX, la cual genera imágenes como las siguietes, en las que se muestran los 2000 nodos y sus conexiones:
-![Grafo SD Resolucion Reducida](https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/img/grafo%20reduct.png) ![Grafo HD Resolucion Reducida](https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/img/grafoSD.png)
+
+TTambién logramos generar una visualización del grafo de forma automática por código, usando la librería networkX, la cual genera imágenes como las siguientes, en las que se muestran los 2000 nodos y sus conexiones:
+![Grafo SD Resolucion Reducida](https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/img/grafo%20reduct.png) 
+
+Imagen 1: Visualización completa del Grafo
+
+![Grafo HD Resolucion Reducida](https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/img/image%20(5).png)
+
+Imagen 2: Visualización de realización de código del Grafo
+
+![Grafo HD Resolucion Reducida](https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/img/sfdgsrgs.png)
+
+Imagen 3: Visualización de cerca de los Nodos
+
+
 Ambas son representaciones del mismo grafo, la diferencia entre ambas es el tamaño del lienzo usado. Como el lienzo del segundo es más grande, las aristas son más delgadas y los nodos están más separados En el segundo caso, usamos un lienzo 10 veces más grande que el primero, desafortunadamente, el espacio usado en memoria usado por el renderizador cuando el tamaño del lienzo es tan grande y el tiempo que demora en renderizarse hicieron que tuviéramos que configurar la aplicación para que genere el resto de representaciones con una menor resolución, como las que se observan en la imagen de la izquierda.
 
-Finalmente, creamos una función que se ejecuta en un bucle infinito y le solicita al usuario dos animes para comparar. 
-![Grafo HD Resolucion Reducida](https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/img/Todo%20Funciona.png)
-Como se observa en los resultados, cuando se comparan animes que tienen géneros parecidos, como Your Lie in April (Romance y Drama principalmente) y Given (Romance y Drama principalmente), el resultado es un porcentaje de recomendación muy alto (87%). Cuando se comparten algunos generos, como Teasing Master Takagi-San (Romance y Comedia), y Your Lie in April (Romance y Drama), el porcentaje de recomendación es alto (70%), pero cuando se comparan animes con géneros diferentes, como Teasing Master Takagi-San (Romance y Comedia) con Death Note (Misterio, Psicológico y Thriller), el resultado es bajo (30%).
 
-Los porcentajes se generan con una función lineal matemática simple que convierte los resultados de los mínimos y máximos que devuelve el algoritmo de búsqueda a un nuevo mínimo y máximo (0 a 100).
 <br><br>
 ___
 <br>
 
 
-## Propuesta
+# 3. Propuesta
 
 Nuestra propuesta consiste en desarrollar una aplicación web para calcular la similitud de dos animes utilizando la técnica del Algoritmo de Dijkstra, que es una técnica de recorrido y búsqueda en grafos. La elección de esta técnica se debe a su eficiencia y velocidad para encontrar la ruta más corta en un grafo ponderado. Según Association for Computing Machinery (2012), se demostró que el Algoritmo de Dijkstra puede ser aplicado exitosamente en sistemas de recomendación, permitiendo encontrar relaciones de similitud entre elementos y generar recomendaciones precisas.
 
@@ -79,12 +93,83 @@ Además, desarrollaremos la aplicación web utilizando el framework Flask, que e
 
 Al combinar la potencia del Algoritmo de Dijkstra con la facilidad de desarrollo de Flask, lograremos una aplicación web que recomendará animes de manera precisa y eficiente, brindando a los usuarios una experiencia satisfactoria.
 
+
 <br><br>
 ___
 <br>
 
 
-## Referencias bibliográficas
+# 4. Diseño del aplicativo
+
+Hemos decidido que el diseño del aplicativo sea de color negro ya que el color negro puede ayudar a resaltar los elementos visuales y el contenido del sitio de anime, permitiendo que las imágenes y los colores de los personajes y escenas sean el foco principal. Esto puede crear una atmósfera envolvente, atractiva y profesional para los usuarios, capturando la esencia del anime y brindando una experiencia visual inmersiva.
+
+1). Comparador de Animes: Esta sección está compuesta por dos selectores de animes, y un knob que muestra el porcentaje de similitud entre estos dos, e instrucciones simples para el uso de la aplicación. El porcentaje de similitud y la lista de animes se obtienen del backend. El diseño de la aplicación usa colores oscuros para los fondos, y colores claros para el texto, para evitar causar fatiga visual. Los datos que se muestran por defecto son “imageNotFound.png” para las imágenes de los animes cuando aún no han sido elegidos, y “¡Elige un Anime!” en los selectores de texto.
+
+![img 1](https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/img/parte%204%20imagen%201.jpg)
+
+Imagen 4: Comparador de animes
+
+
+2). Selector de animes en texto: Este componente de la sección “Comparador de animes” permite a los usuarios elegir el anime que están buscando, de la lista de animes que tenemos en la base de datos. Este selector usa texto simple, por lo que puede cargar y mostrar todos los nombres de los animes disponibles fácilmente, sin suponer un consumo importante de backend. También muestra la carátula del anime seleccionado en grande tras elegir uno.
+
+
+![img 1](https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/img/Todo%20Funciona.png)
+
+Imagen 5: Diseño del selector de Animes, anime no seleccionado
+
+![img 1](https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/img/parte%204%20imagen%202.png)
+
+Imagen 6: Diseño del selector de Animes, anime seleccionado
+
+3). Knob comparativo: El knob comparativo pertenece a la sección “Comparador de animes”, y es el encargado de mostrar el porcentaje de similitud entre los dos animes elegidos por el usuario. El valor por defecto que muestra es 0, si no se ha elegido ningún anime, o si no ha recibido el valor del backend.
+
+![img 1](https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/img/parte%204%20imagen%203.png)
+
+Imagen 7: Diseño del selector de Animes, anime seleccionado
+
+4). Selector de animes con portadas: En esta sección, se listan todos los animes existentes de la base de datos, con sus respectivas imágenes. Para ingresar a este selector, solo basta clickear la portada de uno de los dos animes en la pestaña principal. Este selector fue implementado en el componente Picker. Su función es facilitar al usuario encontrar un anime en concreto de forma más visual, para que pueda elegir uno de los dos animes a comparar. Este componente carga los animes usando Lazy Load, para no sobrecargar la base de datos o el servidor que provee las imágenes. Los animes mostrados se cargan de 10 en 10.
+
+![img 1](https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/img/parte%204%20imagen%204.png)
+
+Imagen 8: Diseño del selector de animes con interfaz visual completa y lazy load
+
+
+
+<br><br>
+___
+<br>
+
+# 5. Validación de resultados y pruebas
+
+Comparador de Animes:
+
+
+
+
+
+
+<br><br>
+___
+<br>
+
+
+# 6. Conclusiones 
+
+-	En conclusión, hemos desarrollado un sistema de recomendación de animes basado en grafos utilizando técnicas de filtrado colaborativo. Este enfoque nos ha permitido aprovechar las relaciones entre los animes y los usuarios para generar recomendaciones personalizadas y relevantes.
+
+-	A través del análisis de los datos y la visualización de los grafos, hemos podido identificar patrones y tendencias en las preferencias de los usuarios, lo que nos ha ayudado a mejorar la precisión de las recomendaciones. Además, las pruebas realizadas han demostrado que nuestro sistema es capaz de adaptarse a los cambios en las preferencias de los usuarios y proporcionar recomendaciones actualizadas y relevantes.
+
+-	En cuanto al trabajo futuro, podríamos ampliar nuestra base de datos de animes y usuarios para aumentar la diversidad y la representatividad de nuestras recomendaciones. En general, creemos que nuestro sistema de recomendación de animes basado en grafos tiene un gran potencial y puede ser aplicado en diversos ámbitos del entretenimiento y la recomendación de contenido.
+
+
+
+<br><br>
+___
+<br>
+
+
+
+# 7. Referencias bibliográficas
 
 AJA (2022). Anime Industry Report 2022. Recuperado de https://aja.gr.jp/download/2022 anime_ind_rpt_summary_en [Consulta: 10 de septiembre de 2023]
 
