@@ -164,7 +164,7 @@ Comparador de Animes:
 
 ![img 1](https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/img/parte%206%20img%201.png)
 
-Imagen 11: Resultado de prueba
+Imagen 11: Resultado de prueba.
 
 ![img 1](https://github.com/nirvagarcia/Complejidad-Algoritmica-2023-2/blob/main/img/parte%206%20img%202.png)
 
