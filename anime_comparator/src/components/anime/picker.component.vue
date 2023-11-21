@@ -63,7 +63,7 @@ export default {
       </div>
     </div>
     <div class="margin-10">
-      <pv-button @click="loadMore" :disabled="loadedAnimeData.length === animeData.length" label="Cargar más"/>
+      <pv-button @click="loadMore" :disabled="loadedAnimeData.length === filteredAnimeData.length" label="Cargar más"/>
     </div>
   </div>
   <div v-else class="margin-10">
