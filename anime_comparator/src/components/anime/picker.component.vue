@@ -50,6 +50,7 @@ export default {
   created() {
     getAnimeGenresList().then((genres)=>{
       this.genres = genres;
+      this.genres.unshift("Clear selection")
     })
     getAnimeFullDataList().then((response)=>{
       this.animeData = []
@@ -66,6 +67,7 @@ export default {
       this.updateFilters();
     },
     genreFilter(newValue){
+      if(newValue == this.genres[0]) this.genreFilter = undefined;
       this.updateFilters();
     }
   }
