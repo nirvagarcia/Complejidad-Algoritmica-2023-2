@@ -18,6 +18,28 @@ async function getFullAnimeNames() {
         return []
     }
 }
+
+async function getAnimeGenresList() {
+    try{
+        const response = await http.get("/getAnimeGenres")
+        return response.data;
+    } catch (error) {
+        console.log("Ocurrio un error al cargar los generos de los animes disponibles:  ", error)
+        return []
+    }
+}
+
+async function getAnimeFullDataList() {
+    try{
+        const response = await http.get("/getFullAnimeData")
+        return response.data;
+    } catch (error) {
+        console.log("Ocurrio un error al cargar los generos de los animes disponibles:  ", error)
+        return []
+    }
+}
+
+
 async function getAnimeImageByID(id: number){
     try{
         const response = await http.get(`/getAnimeImage?id${id}`)
@@ -55,4 +77,4 @@ async function compareTwoAnimes(ID1: number, ID2: number){
 
 
 
-export {compareTwoAnimes, getAnimeImageByID, getFullAnimeNames, getAnimeInfoByID, getFullAnimeImages}
+export {compareTwoAnimes, getAnimeImageByID, getFullAnimeNames, getAnimeInfoByID, getFullAnimeImages, getAnimeGenresList, getAnimeFullDataList}

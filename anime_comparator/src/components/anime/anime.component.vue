@@ -1,5 +1,5 @@
 <script lang="ts">
-import {getFullAnimeNames, getAnimeInfoByID} from "@/services/anime/anime.service";
+import {getFullAnimeNames, getAnimeInfoByID, getFullAnimeImages} from "@/services/anime/anime.service";
 
 export default {
   props: {
@@ -45,6 +45,15 @@ export default {
         this.$emit("selected", this.containerID, newImageID)
         getAnimeInfoByID(this.selectedAnime).then((response)=>{
           this.image = response.image;
+          if(this.image === undefined){
+            getFullAnimeImages().then((response)=>{
+              this.image = response[this.animeID];
+            })
+          }
+        }).catch((e)=>{
+          getFullAnimeImages().then((response)=>{
+            this.image = response[this.animeID];
+          })
         })
       }
     }
@@ -65,9 +74,9 @@ export default {
   overflow: hidden;
   width: 18rem;
 }
-.min-width,
 .min-width img{
-  width: 20rem;
+  object-fit: cover;
+  height: 31rem;
   border-radius: 1rem;
 }
 </style>
