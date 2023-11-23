@@ -34,6 +34,10 @@ def get_names():
 def get_pictures():
     return animePictures
 
+@app.route('/api/v1/getAnimeGenres', methods=['GET'])
+def get_anime_genres():
+    return list(animeGenres)
+
 @app.route('/api/v1/getAnimeImage', methods=['GET'])
 def get_anime_image():
     try:
@@ -53,6 +57,12 @@ def get_anime_data():
             return animeData[id]
         else: abort(404)
     except: abort(500)
+
+@app.route('/api/v1/getFullAnimeData', methods=['GET'])
+def get_full_anime_data():
+    response = jsonify(animeData)
+    response.headers.add('Content-Type', 'application/json')
+    return response
 
 
 print("Backend operativo")

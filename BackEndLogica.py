@@ -29,6 +29,7 @@ frontEndData = "[\n"
 animeNames = []
 animePictures = []
 animeData = []
+animeGenres = set()
 print("Interpretando archivo...")
 for index, row in data.iterrows():
     anime_title = row['titleEnglish']
@@ -47,7 +48,12 @@ for index, row in data.iterrows():
     animeData.append(anime_attributes)
     if type(anime_title) == float:
         anime_title = row['titleRomaji']
+        anime_attributes['titleEnglish'] = row['titleRomaji']
+    if math.isnan(anime_attributes['score']):
+        anime_attributes['score'] = 0.0
     anime_attributes['name'] = anime_title
+    for elements in anime_attributes['genres']:
+        animeGenres.add(elements)
     Grafo.add_node(anime_title, **anime_attributes)
 print("Resumiendo data...")
 animeData = sorted(animeData, key=lambda x: x['name'])
@@ -55,7 +61,6 @@ for elements in animeData:
     animeNames.append(elements['name'])
     animePictures.append(elements['image'].replace("\\", "/"))
 print("Calculando peso de las relaciones entre los nodos...")
-
 
 def calcular_valor_relacion(anime1, anime2):
     generos_anime1 = set(Grafo.nodes[anime1]['genres'])
@@ -69,9 +74,9 @@ def calcular_valor_relacion(anime1, anime2):
     valor_relacion = (len(generos) * 2 + (diferencia_popularidad / sumapopularidad)) * 4 / (
                 1.1 + len(generos_comunes) * 3)
     if len(generos_comunes):
-        return valor_relacion;
+        return valor_relacion
     else:
-        return 0;
+        return 0
 
 
 cantRelations = 0
