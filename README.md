@@ -25,7 +25,7 @@ ___
 
 # 1. Descripción del problema
 
-AAActualmente, la industria del entretenimiento ha experimentado un crecimiento significativo en la popularidad de los animes, y como prueba de esto, se ha observado que las personas que disfrutan de este contenido audiovisual japonés, han aumentado en un 37% alrededor del mundo en los últimos 5 años. (The Association of Japanese Animations, 2022).
+Actualmente, la industria del entretenimiento ha experimentado un crecimiento significativo en la popularidad de los animes, y como prueba de esto, se ha observado que las personas que disfrutan de este contenido audiovisual japonés, han aumentado en un 37% alrededor del mundo en los últimos 5 años. (The Association of Japanese Animations, 2022).
 
 Esta demanda ha llevado a un aumento en la cantidad de animes disponibles y plataformas de streaming que albergan este contenido, sin embargo, encontrar animes que se ajusten a las preferencias individuales de los usuarios puede resultar abrumador, debido a su amplia variedad de géneros. Según Ramu (2022), estima que el 70% de los fanáticos de anime emplean Internet y redes sociales como sus principales fuentes de recomendaciones, buscando opiniones y reseñas, pero las opiniones siempre son subjetivas y se basan en una decisión personal.
 
